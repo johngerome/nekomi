@@ -1,0 +1,21 @@
+# Node
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+
+# SQLite database
+schedule_channels.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.local
+*.cache
