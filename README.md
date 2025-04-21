@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./logo.png" alt="Nekomi Logo" width="200" height="200" />
+  <img src="./logo.png" alt="Nekomi Logo" width="200" height="200" style="border-radius: 16px;" />
 </div>
 
 # Nekomi Discord Bot
