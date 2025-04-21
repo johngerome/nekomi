@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="./logo.png" alt="Nekomi Logo" width="200" height="200" />
+</div>
+
 # Nekomi Discord Bot
 
 [![Node.js](https://img.shields.io/badge/node-%3E=18.0.0-green.svg?style=flat-square)](https://nodejs.org/)
