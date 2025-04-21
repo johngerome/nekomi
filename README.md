@@ -4,7 +4,7 @@
 
 # Nekomi Discord Bot
 
-[![Node.js](https://img.shields.io/badge/node-%3E=18.0.0-green.svg?style=flat-square)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/node-%3E=22.0.0-green.svg?style=flat-square)](https://nodejs.org/)
 [![pnpm](https://img.shields.io/badge/package%20manager-pnpm-f69220?style=flat-square)](https://pnpm.io/)
 [![TypeScript](https://img.shields.io/badge/language-typescript-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
