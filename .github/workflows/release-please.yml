@@ -21,6 +21,6 @@ jobs:
         with:
           node-version: 20
       - name: Release Please
-        uses: google-github-actions/release-please-action@v4
+        uses: googleapis/release-please-action@v4
         with:
           release-type: node
