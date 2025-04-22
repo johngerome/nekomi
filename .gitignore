@@ -10,6 +10,8 @@ schedule_channels.db
 
 # Logs
 *.log
+logs/
+pm2-err.log
 npm-debug.log*
 
 # OS
