@@ -38,7 +38,7 @@ client.once('ready', async () => {
     const catUrl = await fetchCatImage();
     if (!catUrl) return;
     // For each guild, send to its configured channel
-    for (const [guildId, guild] of client.guilds.cache) {
+    for (const [guildId] of client.guilds.cache) {
       // Dynamically import to avoid circular dependency
       const { getScheduleChannel } = await import('./db/scheduleChannel');
       const channelId = await getScheduleChannel(guildId);
@@ -85,7 +85,7 @@ const fetchCatImage = async (): Promise<string | null> => {
 };
 
 // Attach fetchCatImage to client for command access
-// @ts-ignore
+// @ts-expect-error: fetchCatImage is dynamically attached to client
 client.fetchCatImage = fetchCatImage;
 
 client.login(process.env.DISCORD_TOKEN);

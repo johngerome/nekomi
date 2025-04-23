@@ -6,7 +6,7 @@ const neko = {
     await interaction.deferReply();
     try {
       // Use the fetchCatImage helper attached to client
-      // @ts-ignore
+      // @ts-expect-error: fetchCatImage is dynamically attached to client
       const fetchCatImage: () => Promise<string | null> = client.fetchCatImage;
       const catUrl = await fetchCatImage();
       if (!catUrl) {
