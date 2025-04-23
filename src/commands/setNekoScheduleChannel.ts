@@ -5,10 +5,13 @@ import {
   ChannelType,
 } from 'discord.js';
 import { setScheduleChannel } from '../db/scheduleChannel';
+import { parse, isValid, format } from 'date-fns';
 
-export const data = new SlashCommandBuilder()
-  .setName('setnekoschedulechannel')
-  .setDescription('Set the channel for the daily Neko schedule.')
+export const CMD_SETNEKOSCHEDULE = 'setnekoschedule';
+
+export const setNekoScheduleCommand = new SlashCommandBuilder()
+  .setName(CMD_SETNEKOSCHEDULE)
+  .setDescription('Set the channel and time for the daily Neko schedule.')
   .addChannelOption(option =>
     option
       .setName('channel')
@@ -16,17 +19,41 @@ export const data = new SlashCommandBuilder()
       .setRequired(true)
       .addChannelTypes(ChannelType.GuildText),
   )
+  .addStringOption(option =>
+    option.setName('time').setDescription('Time in 24hr format (HH:mm)').setRequired(true),
+  )
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild);
 
-export async function executeSetNekoScheduleChannel(interaction: ChatInputCommandInteraction) {
+export async function executeSetNekoScheduleCommand(interaction: ChatInputCommandInteraction) {
   const channel = interaction.options.getChannel('channel', true);
-  if (channel.type !== ChannelType.GuildText) {
+  const timeInput = interaction.options.getString('time', true);
+
+  if (!channel) {
     await interaction.reply({ content: 'Please select a text channel.', ephemeral: true });
     return;
   }
-  setScheduleChannel(interaction.guildId!, channel.id);
+
+  if (!timeInput) {
+    await interaction.reply({ content: 'Please provide a time.', ephemeral: true });
+    return;
+  }
+
+  const parsedTime = parse(timeInput, 'HH:mm', new Date());
+
+  if (!isValid(parsedTime)) {
+    await interaction.reply({
+      content: 'Invalid time format. Please use 24hr format (HH:mm), e.g., 14:30.',
+      ephemeral: true,
+    });
+    return;
+  }
+
+  const time = format(parsedTime, 'HH:mm');
+
+  // Store channel and time (assume setScheduleChannel can accept time as second argument)
+  await setScheduleChannel(interaction.guildId!, channel.id, time);
   await interaction.reply({
-    content: `Daily Neko schedule channel set to <#${channel.id}>!`,
+    content: `Daily Neko schedule channel set to <#${channel.id}> at **${time}**!`,
     ephemeral: true,
   });
 }

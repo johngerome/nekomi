@@ -18,7 +18,7 @@ Nekomi is a cute Discord bot that delivers a random cat picture or gif every day
 - **Slash Commands:**
   - `/nekoschedule` — Schedules daily cat drops.
   - `/neko` — Custom neko command.
-  - `/setnekoschedulechannel` — Set the channel for the daily Neko schedule.
+  - `/setnekoschedule` — Set the channel for the daily Neko schedule.
   - `/removenekoschedulechannel` — Remove the channel for the daily Neko schedule.
 - **Written in TypeScript** for type safety and maintainability.
 - **Prettier** for consistent code style.
@@ -58,7 +58,8 @@ Nekomi now uses [Supabase](https://supabase.com/) for all persistent storage. Yo
    ```sql
    create table if not exists public.guild_channels (
      guild_id text primary key,
-     channel_id text not null
+     channel_id text not null,
+     time text not null
    );
    ```
 
