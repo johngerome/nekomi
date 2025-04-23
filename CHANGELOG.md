@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.2](https://github.com/johngerome/nekomi/compare/v0.0.1...v0.0.2) (2025-04-23)
+
+
+### Bug Fixes
+
+* replace ts-ignore with ts-expect-error and remove unused guild variable ([a0aded4](https://github.com/johngerome/nekomi/commit/a0aded4f13c1278504894466c965cb5d617ec16c))
+
 ## 0.0.1 (2025-04-21)
 
 ### Features
