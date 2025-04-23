@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.0](https://github.com/johngerome/nekomi/compare/v0.0.2...v0.1.0) (2025-04-23)
+
+
+### Features
+
+* refactor commands and improved logging ([#9](https://github.com/johngerome/nekomi/issues/9)) ([e56772b](https://github.com/johngerome/nekomi/commit/e56772bd57071f3a20d1ef16d012f07393cf45d0))
+
 ## [0.0.2](https://github.com/johngerome/nekomi/compare/v0.0.1...v0.0.2) (2025-04-23)
 
 
