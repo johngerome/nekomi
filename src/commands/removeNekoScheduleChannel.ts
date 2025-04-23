@@ -4,14 +4,17 @@ import {
   PermissionFlagsBits,
   MessageFlags,
 } from 'discord.js';
+
 import { removeScheduleChannel } from '../db/scheduleChannel';
 
-export const data = new SlashCommandBuilder()
-  .setName('removenekoschedulechannel')
+export const CMD_REMOVENEKOSCHEDULE = 'removenekoschedule';
+
+export const removeNekoScheduleCommand = new SlashCommandBuilder()
+  .setName(CMD_REMOVENEKOSCHEDULE)
   .setDescription('Remove the channel for the daily Neko schedule.')
   .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild);
 
-export async function executeRemoveNekoScheduleChannel(interaction: ChatInputCommandInteraction) {
+export async function executeRemoveNekoScheduleCommand(interaction: ChatInputCommandInteraction) {
   if (!interaction.guildId) {
     await interaction.reply({
       content: 'This command can only be used in a server.',
