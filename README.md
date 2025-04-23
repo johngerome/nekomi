@@ -16,10 +16,10 @@ Nekomi is a cute Discord bot that delivers a random cat picture or gif every day
 
 - **Daily Cat Drops:** Schedules and posts a random cat image every day at 9:00 AM.
 - **Slash Commands:**
-  - `/nekoschedule` — Schedules daily cat drops.
-  - `/neko` — Custom neko command.
-  - `/setnekoschedule` — Set the channel for the daily Neko schedule.
-  - `/removenekoschedulechannel` — Remove the channel for the daily Neko schedule.
+  - `/neko` — Get a random cute cat image!
+  - `/nekoschedule` — Check when Nekomi posts her daily cat photo!
+  - `/setnekoschedule` — Set the channel and time for the daily Neko schedule. _(Options: `channel` (required), `time` (required, 24hr format HH:mm))_
+  - `/removenekoschedule` — Remove the channel for the daily Neko schedule.
 - **Written in TypeScript** for type safety and maintainability.
 - **Prettier** for consistent code style.
 
@@ -27,7 +27,7 @@ Nekomi is a cute Discord bot that delivers a random cat picture or gif every day
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [Node.js](https://nodejs.org/) (v22+ recommended)
 - [pnpm](https://pnpm.io/) (used for dependency management)
 
 ### Installation
@@ -59,7 +59,7 @@ Nekomi now uses [Supabase](https://supabase.com/) for all persistent storage. Yo
    create table if not exists public.guild_channels (
      guild_id text primary key,
      channel_id text not null,
-     time text not null
+     time varchar(5) not null
    );
    ```
 
