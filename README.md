@@ -10,11 +10,11 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io/)
 
-Nekomi is a cute Discord bot that delivers a random cat picture or gif every day, straight to your channel. Just type !cat for an instant cat delivery, or let it automatically send one daily! Perfect for adding some daily cuteness to your server. 🐾
+Nekomi is a cute Discord bot that delivers a random cat picture or gif every day, straight to your channel. Use the `/neko` slash command for an instant cat delivery, or let Nekomi automatically send one daily! Perfect for adding some daily cuteness to your server. 🐾
 
 ## Features
 
-- **Daily Cat Drops:** Schedules and posts a random cat image every day at 9:00 AM.
+- **Daily Cat Drops:** Automatically posts a random cat image to your chosen channel every day at your scheduled time.
 - **Slash Commands:**
   - `/neko` — Get a random cute cat image!
   - `/nekoschedule` — Check when Nekomi posts her daily cat photo!
@@ -48,7 +48,7 @@ SUPABASE_KEY=your-supabase-anon-key
 
 ### Persistent Storage: Supabase
 
-Nekomi now uses [Supabase](https://supabase.com/) for all persistent storage. You **do not need SQLite** or any local database files.
+Nekomi uses [Supabase](https://supabase.com/) for all persistent storage.
 
 #### Supabase Setup
 
@@ -68,13 +68,16 @@ Nekomi now uses [Supabase](https://supabase.com/) for all persistent storage. Yo
    - `SUPABASE_KEY` (Anon public key)
 4. **Add these to your `.env` file** as shown above.
 
-**Note:** No local database file will be created or used. All schedule channel data is stored securely in your Supabase database.
+**Note:** All schedule channel data is stored securely in your Supabase database.
 
 ### Scripts
 
-- `pnpm start` — Run the bot in development mode
+- `pnpm start` — Start the bot (production or normal run)
+- `pnpm dev` — Start the bot in watch mode for development
 - `pnpm format` — Format the codebase with Prettier
-- `pnpm format:check` — Check code formatting
+- `pnpm format:check` — Check code formatting with Prettier
+- `pnpm lint` — Run ESLint on the codebase
+- `pnpm type-check` — Run TypeScript type checking without emitting files
 
 ### Running the Bot
 
