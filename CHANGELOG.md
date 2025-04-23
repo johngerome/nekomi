@@ -9,15 +9,13 @@
 
 ## 0.0.1 (2025-04-21)
 
-
 ### Features
 
-* Initial commit ([62f22f4](https://github.com/johngerome/nekomi/commit/62f22f4d9ef70144fabb61c591f2f1b2751a0cdd))
-
+- Initial commit ([62f22f4](https://github.com/johngerome/nekomi/commit/62f22f4d9ef70144fabb61c591f2f1b2751a0cdd))
 
 ### Miscellaneous Chores
 
-* release 0.0.1 ([659d154](https://github.com/johngerome/nekomi/commit/659d154ffa2ed10393a5fdff75bb4be38f9ad23d))
+- release 0.0.1 ([659d154](https://github.com/johngerome/nekomi/commit/659d154ffa2ed10393a5fdff75bb4be38f9ad23d))
 
 ## Changelog
 
