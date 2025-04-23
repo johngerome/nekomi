@@ -81,6 +81,41 @@ Nekomi now uses [Supabase](https://supabase.com/) for all persistent storage. Yo
 pnpm start
 ```
 
+## Running on VPS
+
+To run the Nekomi bot on a VPS or production server, it is recommended to use [PM2](https://pm2.keymetrics.io/) as a process manager. PM2 ensures your bot stays online, restarts on failure, and manages logs efficiently.
+
+Below is a sample `pm2.config.js` configuration for running the bot using the Bun runtime. This setup logs output and errors to the `./logs` directory and sets different environments for development and production.
+
+```js
+// pm2.config.js
+module.exports = {
+  apps: [
+    {
+      name: 'nekomi',
+      script: './src/index.ts',
+      instances: 1,
+      exec_mode: 'fork',
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '480M',
+      error_file: './logs/pm2-err.log',
+      out_file: './logs/pm2-out.log',
+      interpreter: 'bun', // Bun interpreter
+      env: {
+        NODE_ENV: 'development',
+        WATCH: 'true',
+        PATH: `${process.env.HOME}/.bun/bin:${process.env.PATH}`,
+      },
+      env_production: {
+        NODE_ENV: 'production',
+        WATCH: 'false',
+      },
+    },
+  ],
+};
+```
+
 ## Contributing
 
 Pull requests and issues are welcome! Please ensure code style is consistent by running Prettier before submitting.
