@@ -1,13 +1,19 @@
 import { supabase } from './supabaseClient';
 
-export async function setScheduleChannel(guildId: string, channelId: string, time: string): Promise<void> {
+export async function setScheduleChannel(
+  guildId: string,
+  channelId: string,
+  time: string,
+): Promise<void> {
   const { error } = await supabase
     .from('guild_channels')
     .upsert([{ guild_id: guildId, channel_id: channelId, time }], { onConflict: 'guild_id' });
   if (error) throw error;
 }
 
-export async function getScheduleChannel(guildId: string): Promise<{ channelId: string; time: string } | undefined> {
+export async function getScheduleChannel(
+  guildId: string,
+): Promise<{ channelId: string; time: string } | undefined> {
   const { data, error } = await supabase
     .from('guild_channels')
     .select('channel_id, time')

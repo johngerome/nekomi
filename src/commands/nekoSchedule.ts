@@ -1,6 +1,7 @@
-import { SlashCommandBuilder } from 'discord.js';
+import { MessageFlags, SlashCommandBuilder } from 'discord.js';
 import type { ChatInputCommandInteraction } from 'discord.js';
 import { CMD_SETNEKOSCHEDULE as SET_COMMAND } from './setNekoScheduleChannel';
+import consola from 'consola';
 
 export const CMD_NEKOSCHEDULE = 'nekoschedule';
 
@@ -44,11 +45,11 @@ export async function executeNekoScheduleCommand(interaction: ChatInputCommandIn
     );
   } catch (error) {
     // Only log in development or for diagnostics
-    console.error(`Error in /${CMD_NEKOSCHEDULE} command:`, error);
+    consola.error(`Error in /${CMD_NEKOSCHEDULE} command:`, error);
     if (!interaction.replied && !interaction.deferred) {
       await interaction.reply({
         content: 'Sorry, something went wrong!',
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     } else if (interaction.deferred && !interaction.replied) {
       await interaction.editReply({

@@ -1,23 +1,37 @@
-// Schedule daily Neko drop at 9:00 AM
-  // cron.schedule('0 9 * * *', async () => {
-  //   const catUrl = await fetchCatImage();
-  //   if (!catUrl) return;
-  //   // For each guild, send to its configured channel
-  //   for (const [guildId] of client.guilds.cache) {
-  //     // Dynamically import to avoid circular dependency
-  //     const { getScheduleChannel } = await import('./db/scheduleChannel');
-  //     const channelId = await getScheduleChannel(guildId);
-  //     if (!channelId) continue;
-  //     try {
-  //       const channel = await client.channels.fetch(channelId);
-  //       if (channel && channel.isTextBased()) {
-  //         await (channel as TextChannel).send({
-  //           content: "Nekomi's daily cat delivery! 🐾",
-  //           files: [catUrl],
-  //         });
-  //       }
-  //     } catch (err) {
-  //       console.error(`Failed to send Neko to guild ${guildId}:`, err);
-  //     }
-  //   }
-  // });
+import cron from 'node-cron';
+import consola from 'consola';
+import { Client, TextChannel } from 'discord.js';
+import { fetchCatImage } from './util';
+
+export async function scheduleDailyNekoDrop(client: Client, guildId: string) {
+  try {
+    // Dynamically import to avoid circular dependency
+    const { getScheduleChannel } = await import('./db/scheduleChannel');
+    const channel = await getScheduleChannel(guildId);
+
+    if (!channel?.channelId || !channel.time) return;
+
+    const [hour, minute] = channel.time.split(':').map(Number);
+    const cronExpr = `${minute} ${hour} * * *`;
+
+    cron.schedule(cronExpr, async () => {
+      consola.info('Cron Triggered for guild:', guildId, new Date().toISOString());
+      const catUrl = await fetchCatImage();
+
+      if (!catUrl) return;
+
+      const dch = await client.channels.fetch(channel.channelId);
+
+      if (dch && dch.isTextBased()) {
+        await (dch as TextChannel).send({
+          content: "Nekomi's daily cat delivery! 🐾",
+          files: [catUrl],
+        });
+      }
+    });
+
+    consola.info('Cron scheduled for guild');
+  } catch (error) {
+    consola.error('Failed to schedule daily Neko drop:', error);
+  }
+}

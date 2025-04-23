@@ -1,4 +1,5 @@
 import { Client, Interaction, REST } from 'discord.js';
+import consola from 'consola';
 import { interactionCreate, register } from './register';
 
 /**
@@ -10,7 +11,7 @@ export function onReady(client: Client, rest: REST) {
   client.on('ready', () => {
     register(client, rest);
 
-    console.log(`Nekomi is online nya~ as ${client.user?.tag}`);
+    consola.info(`Nekomi is online nya~ as ${client.user?.tag}`);
   });
 }
 

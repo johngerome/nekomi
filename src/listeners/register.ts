@@ -16,6 +16,7 @@ import {
   executeRemoveNekoScheduleCommand,
   removeNekoScheduleCommand,
 } from '../commands/removeNekoScheduleChannel';
+import consola from 'consola';
 
 /**
  * Sets up all the bot's slash commands!
@@ -32,9 +33,10 @@ export async function register(client: Client, rest: REST) {
         removeNekoScheduleCommand.toJSON(),
       ],
     });
-    console.log('Slash commands registered!');
+
+    consola.info('Slash commands registered!');
   } catch (error) {
-    console.error('Command registration failed:', error);
+    consola.error('Command registration failed:', error);
   }
 }
 

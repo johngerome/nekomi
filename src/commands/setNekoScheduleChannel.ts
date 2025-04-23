@@ -3,9 +3,11 @@ import {
   ChatInputCommandInteraction,
   PermissionFlagsBits,
   ChannelType,
+  MessageFlags,
 } from 'discord.js';
 import { setScheduleChannel } from '../db/scheduleChannel';
 import { parse, isValid, format } from 'date-fns';
+import { scheduleDailyNekoDrop } from '../cron';
 
 export const CMD_SETNEKOSCHEDULE = 'setnekoschedule';
 
@@ -43,7 +45,7 @@ export async function executeSetNekoScheduleCommand(interaction: ChatInputComman
   if (!isValid(parsedTime)) {
     await interaction.reply({
       content: 'Invalid time format. Please use 24hr format (HH:mm), e.g., 14:30.',
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
     return;
   }
@@ -52,8 +54,10 @@ export async function executeSetNekoScheduleCommand(interaction: ChatInputComman
 
   // Store channel and time (assume setScheduleChannel can accept time as second argument)
   await setScheduleChannel(interaction.guildId!, channel.id, time);
+  await scheduleDailyNekoDrop(interaction.client, interaction.guildId!);
+
   await interaction.reply({
     content: `Daily Neko schedule channel set to <#${channel.id}> at **${time}**!`,
-    ephemeral: true,
+    flags: MessageFlags.Ephemeral,
   });
 }

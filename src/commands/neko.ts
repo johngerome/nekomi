@@ -1,4 +1,5 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction } from 'discord.js';
+import consola from 'consola';
 import { fetchCatImage } from '../util';
 
 export const CMD_NEKO = 'neko';
@@ -24,7 +25,7 @@ export async function executeNekoCommand(interaction: ChatInputCommandInteractio
       files: [catUrl],
     });
   } catch (error) {
-    console.error('Error in /neko command:', error);
+    consola.error('Error in /neko command:', error);
     await interaction.editReply('Something went wrong fetching your cat. 😿');
   }
 }
