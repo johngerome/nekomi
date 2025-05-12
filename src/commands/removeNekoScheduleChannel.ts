@@ -7,7 +7,7 @@ import {
 
 import { removeScheduleChannel } from '../db/scheduleChannel';
 
-export const CMD_REMOVENEKOSCHEDULE = 'removenekoschedule';
+export const CMD_REMOVENEKOSCHEDULE = 'remove-schedule';
 
 export const removeNekoScheduleCommand = new SlashCommandBuilder()
   .setName(CMD_REMOVENEKOSCHEDULE)
