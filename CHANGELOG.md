@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/johngerome/nekomi/compare/v0.1.0...v0.1.1) (2025-05-12)
+
+
+### Bug Fixes
+
+* standardize command names with hyphenated format ([#14](https://github.com/johngerome/nekomi/issues/14)) ([2094cdd](https://github.com/johngerome/nekomi/commit/2094cdd51f36c654ddb8b9f10611d21bc29d2875))
+
 ## [0.1.0](https://github.com/johngerome/nekomi/compare/v0.0.2...v0.1.0) (2025-04-23)
 
 
