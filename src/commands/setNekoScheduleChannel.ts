@@ -9,7 +9,7 @@ import { setScheduleChannel } from '../db/scheduleChannel';
 import { parse, isValid, format } from 'date-fns';
 import { scheduleDailyNekoDrop } from '../cron';
 
-export const CMD_SETNEKOSCHEDULE = 'setnekoschedule';
+export const CMD_SETNEKOSCHEDULE = 'set-schedule';
 
 export const setNekoScheduleCommand = new SlashCommandBuilder()
   .setName(CMD_SETNEKOSCHEDULE)

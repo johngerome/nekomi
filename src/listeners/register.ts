@@ -2,7 +2,7 @@ import { Client, Interaction, REST, Routes } from 'discord.js';
 
 import { CMD_NEKO, executeNekoCommand, nekoCommand } from '../commands/neko';
 import {
-  CMD_NEKOSCHEDULE,
+  CMD_CHECK_NEKOSCHEDULE,
   executeNekoScheduleCommand,
   nekoScheduleCommand,
 } from '../commands/nekoSchedule';
@@ -51,7 +51,7 @@ export async function interactionCreate(interaction: Interaction) {
     case CMD_NEKO:
       await executeNekoCommand(interaction);
       break;
-    case CMD_NEKOSCHEDULE:
+    case CMD_CHECK_NEKOSCHEDULE:
       await executeNekoScheduleCommand(interaction);
       break;
     case CMD_SETNEKOSCHEDULE:

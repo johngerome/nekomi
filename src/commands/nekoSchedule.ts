@@ -1,12 +1,14 @@
-import { MessageFlags, SlashCommandBuilder } from 'discord.js';
 import type { ChatInputCommandInteraction } from 'discord.js';
+
+import { MessageFlags, SlashCommandBuilder } from 'discord.js';
 import { CMD_SETNEKOSCHEDULE as SET_COMMAND } from './setNekoScheduleChannel';
+
 import consola from 'consola';
 
-export const CMD_NEKOSCHEDULE = 'nekoschedule';
+export const CMD_CHECK_NEKOSCHEDULE = 'check-schedule';
 
 export const nekoScheduleCommand = new SlashCommandBuilder()
-  .setName(CMD_NEKOSCHEDULE)
+  .setName(CMD_CHECK_NEKOSCHEDULE)
   .setDescription('Check when Nekomi posts her daily cat photo!');
 
 export async function executeNekoScheduleCommand(interaction: ChatInputCommandInteraction) {
@@ -45,7 +47,7 @@ export async function executeNekoScheduleCommand(interaction: ChatInputCommandIn
     );
   } catch (error) {
     // Only log in development or for diagnostics
-    consola.error(`Error in /${CMD_NEKOSCHEDULE} command:`, error);
+    consola.error(`Error in /${CMD_CHECK_NEKOSCHEDULE} command:`, error);
     if (!interaction.replied && !interaction.deferred) {
       await interaction.reply({
         content: 'Sorry, something went wrong!',

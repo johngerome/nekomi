@@ -9,13 +9,10 @@
     "PGRST",
     "removenekoschedule",
     "removenekoschedulechannel",
-<<<<<<< Updated upstream
     "setnekoschedule",
-    "SUPABASE"
-=======
+    "SUPABASE",
     "setnekoschedulechannel",
     "SUPABASE",
     "varchar"
->>>>>>> Stashed changes
   ]
 }
