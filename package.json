@@ -13,24 +13,24 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
-    "axios": "^1.6.0",
+    "axios": "^1.9.0",
     "consola": "^3.4.2",
     "date-fns": "^4.1.0",
-    "discord.js": "^14.14.1",
+    "discord.js": "^14.19.3",
     "dotenv": "^16.3.1",
-    "node-cron": "^3.0.2"
+    "node-cron": "^4.0.3"
   },
   "devDependencies": {
-    "@eslint/js": "^9.25.1",
-    "@types/node": "^22.14.1",
+    "@eslint/js": "^9.26.0",
+    "@types/node": "^22.15.17",
     "@types/node-cron": "^3.0.11",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^9.25.1",
-    "globals": "^16.0.0",
+    "eslint": "^9.26.0",
+    "globals": "^16.1.0",
     "prettier": "^3.5.3",
-    "tsx": "^4.19.3",
-    "typescript": "^5.3.3"
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
   },
   "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677",
   "engines": {
